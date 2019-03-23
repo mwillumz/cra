@@ -1,0 +1,36 @@
+#' Transmittal Sheet
+#'
+#' The transmittal sheet is used to identify each institution. Institutions
+#' are asked to provide a reporter’s identification (RID) number. This
+#' number corresponds to the certificate number for FDIC-supervised
+#' institutions, and the charter number for OCC-supervised institutions. If an
+#' institution is supervised by the Federal Reserve System, the Research,
+#' Statistics, Supervision and Regulation, and Discount and Credit (RSSD)
+#' Number is used. Institutions that do not know their reporter identification
+#' number should contact the CRA Assistance Line at crahelp@frb.gov to obtain it.
+#' The transmittal sheet provides valuable institution and contact information. It
+#' is important that the institution’s name, contact name, address, phone number,
+#' fax number, and e-mail address be correct since all future correspondence will be based
+#' on that information.
+#'
+#' Only available for most recent year.
+#'
+#' @format A tibble with 718 rows and 11 variables:
+#' \describe{
+#'   \item{respondent_id}{Assigned by regulatory agency. Right justified with leading zeros}
+#'   \item{agency_code}{Values are 1=OCC, 2=FRS, or 3=FDIC}
+#'   \item{activity_year}{Four digit year (e.g. 2017)}
+#'   \item{respondent_name}{Left justified}
+#'   \item{respondent_address}{Left justified}
+#'   \item{respondent_city}{Left justified}
+#'   \item{respondent_state}{Postal Code abbreviation}
+#'   \item{respondent_zip}{Format is 99999 left justified or 99999-9999}
+#'   \item{tax_id}{Format is nn-nnnnnnn}
+#'   \item{id_rssd}{Assigned by the Federal Reserve Board. Should be right
+#'   justified with leading zeros.}
+#'   \item{assets}{Assets reported on the prior year-end Call Report or TFR, in thousands of US dollars.
+#'   Should be right justified with leading zeros.}
+#'   ...
+#' }
+#' @source \url{https://www.ffiec.gov/cra/}
+"Trans"
