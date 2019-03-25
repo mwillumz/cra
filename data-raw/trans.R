@@ -19,10 +19,26 @@ Layout <- bind_rows(tibble(year = 1996,
                                          "respondent_state", "respondent_zip",
                                          "tax_id", "id_rssd", "assets"))) %>%
   group_by(year, types) %>%
+  nest() %>%
+  mutate(table_id = "TS")
+
+Layout2 <- tibble(table_id = "D6",
+                 year = 2016,
+                 types = "cciicccccccccc",
+                 start = c(1, 6, 16, 17, 21, 23, 26, 31, 38, 42, 43, 44, 45, 48),
+                 end = c(5, 15, 16, 20, 22, 25, 30, 37, 41, 42, 43, 44, 47, 48),
+                 col_names = c('table_id', 'respondent_id', 'agency_code', 'activity_year', 'statefp', 'countyfp',
+                               'cbsafp', 'tractce', 'aa_number', 'partial_county', 'split_county', 'population',
+                               'income', 'loan')) %>%
+  group_by(table_id, year, types) %>%
   nest()
 
-devtools::use_data(Layout, internal = TRUE)
+Layout <- bind_rows(Layout, Layout2)
+
+usethis::use_data(Layout, internal = TRUE, overwrite = TRUE)
 
 # Transmittal sheet data for package
 Trans <- get_trans(2017)
-devtools::use_data(Trans, overwrite = TRUE)
+usethis::use_data(Trans, overwrite = TRUE)
+
+# Discl <- get_discl(2017)
